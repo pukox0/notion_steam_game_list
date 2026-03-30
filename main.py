@@ -125,23 +125,23 @@ def add_item_to_notion_database(game, achievements_info, review_text, steam_stor
             "database_id": f"{NOTION_DATABASE_ID}",
         },
         "properties": {
-            "name": {
+            "Name": {
                 "type": "title",
                 "title": [{"type": "text", "text": {"content": f"{game['name']}"}}],
             },
-            "playtime": {"type": "number", "number": playtime},
-            "last play": {"type": "date", "date": {"start": last_played_time}},
-            "store url": {
+            "Playtime": {"type": "number", "number": playtime},
+            "Last Play": {"type": "date", "date": {"start": last_played_time}},
+            "Store URL": {
                 "type": "url",
                 "url": store_url,
             },
-            "completion": {"type": "number", "number": completion},
-            "total achievements": {"type": "number", "number": total_achievements},
-            "achieved achievements": {
+            "Completion": {"type": "number", "number": completion},
+            "Total Achievements": {"type": "number", "number": total_achievements},
+            "Achieved Achievements": {
                 "type": "number",
                 "number": achieved_achievements,
             },
-            "review": {
+            "Review": {
                 "type": "rich_text",
                 "rich_text": [
                     {
@@ -150,7 +150,7 @@ def add_item_to_notion_database(game, achievements_info, review_text, steam_stor
                     }
                 ],
             },
-            "info": {
+            "Info": {
                 "type": "rich_text",
                 "rich_text": [
                     {
