@@ -125,23 +125,23 @@ def add_item_to_notion_database(game, achievements_info, review_text, steam_stor
             "database_id": f"{NOTION_DATABASE_ID}",
         },
         "properties": {
-            "Name": {
+            "name": {
                 "type": "title",
                 "title": [{"type": "text", "text": {"content": f"{game['name']}"}}],
             },
-            "Playtime": {"type": "number", "number": playtime},
-            "Last Play": {"type": "date", "date": {"start": last_played_time}},
-            "Store URL": {
+            "playtime": {"type": "number", "number": playtime},
+            "last play": {"type": "date", "date": {"start": last_played_time}},
+            "store url": {
                 "type": "url",
                 "url": store_url,
             },
-            "Completion": {"type": "number", "number": completion},
-            "Total Achievements": {"type": "number", "number": total_achievements},
-            "Achieved Achievements": {
+            "completion": {"type": "number", "number": completion},
+            "total achievements": {"type": "number", "number": total_achievements},
+            "achieved achievements": {
                 "type": "number",
                 "number": achieved_achievements,
             },
-            "Review": {
+            "review": {
                 "type": "rich_text",
                 "rich_text": [
                     {
@@ -150,7 +150,7 @@ def add_item_to_notion_database(game, achievements_info, review_text, steam_stor
                     }
                 ],
             },
-            "Info": {
+            "info": {
                 "type": "rich_text",
                 "rich_text": [
                     {
@@ -159,7 +159,7 @@ def add_item_to_notion_database(game, achievements_info, review_text, steam_stor
                     }
                 ],
             },
-            "Tags": {
+            "tags": {
                 "type": "multi_select",
                 "multi_select": steam_store_data['tag']
             }
@@ -230,23 +230,23 @@ def update_item_to_notion_database(page_id, game, achievements_info, review_text
 
     data = {
         "properties": {
-            "Name": {
+            "name": {
                 "type": "title",
                 "title": [{"type": "text", "text": {"content": f"{game['name']}"}}],
             },
-            "Playtime": {"type": "number", "number": playtime},
-            "Last Play": {"type": "date", "date": {"start": last_played_time}},
-            "Store URL": {
+            "playtime": {"type": "number", "number": playtime},
+            "last play": {"type": "date", "date": {"start": last_played_time}},
+            "store url": {
                 "type": "url",
                 "url": store_url,
             },
-            "Completion": {"type": "number", "number": completion},
-            "Total Achievements": {"type": "number", "number": total_achievements},
-            "Achieved Achievements": {
+            "completion": {"type": "number", "number": completion},
+            "total achievements": {"type": "number", "number": total_achievements},
+            "achieved achievements": {
                 "type": "number",
                 "number": achieved_achievements,
             },
-            "Review": {
+            "review": {
                 "type": "rich_text",
                 "rich_text": [
                     {
@@ -255,7 +255,7 @@ def update_item_to_notion_database(page_id, game, achievements_info, review_text
                     }
                 ],
             },
-            "Info": {
+            "info": {
                 "type": "rich_text",
                 "rich_text": [
                     {
@@ -264,7 +264,7 @@ def update_item_to_notion_database(page_id, game, achievements_info, review_text
                     }
                 ],
             },
-            "Tags": {
+            "tags": {
                 "type": "multi_select",
                 "multi_select": steam_store_data['tag']
             }
@@ -297,15 +297,15 @@ def database_create(page_id):
             "type": "page_id",
             "page_id": page_id,
         },
-        "title": [{"type": "text", "text": {"content": "遊戲庫（Steam區）"}}],
+        "title": [{"type": "text", "text": {"content": "Game List"}}],
         "properties": {
-            "Name": {"title": {}},
-            "Completion": {"number": {}},
-            "PlayTime": {"number": {}},
-            "Last Play": {"date": {}},
-            "Total Achievements": {"number": {}},
-            "Achieved Achievements": {"number": {}},
-            "Store URL": {"url": {}},
+            "name": {"title": {}},
+            "completion": {"number": {}},
+            "playtime": {"number": {}},
+            "last play": {"date": {}},
+            "total achievements": {"number": {}},
+            "achieved achievements": {"number": {}},
+            "store url": {"url": {}},
         },
     }
 
