@@ -297,15 +297,15 @@ def database_create(page_id):
             "type": "page_id",
             "page_id": page_id,
         },
-        "title": [{"type": "text", "text": {"content": "Game List"}}],
+        "title": [{"type": "text", "text": {"content": "遊戲庫（Steam區）"}}],
         "properties": {
-            "name": {"title": {}},
-            "completion": {"number": {}},
-            "playtime": {"number": {}},
-            "last play": {"date": {}},
-            "total achievements": {"number": {}},
-            "achieved achievements": {"number": {}},
-            "store url": {"url": {}},
+            "Name": {"title": {}},
+            "Completion": {"number": {}},
+            "PlayTime": {"number": {}},
+            "Last Play": {"date": {}},
+            "Total Achievements": {"number": {}},
+            "Achieved Achievements": {"number": {}},
+            "Store URL": {"url": {}},
         },
     }
 
