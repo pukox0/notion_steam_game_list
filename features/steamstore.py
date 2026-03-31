@@ -3,7 +3,7 @@ from urllib import request, parse
 from http import cookiejar
 def get_steam_store_info(appid):
     # 构造请求 URL 和 Headers
-    url = f"https://store.steampowered.com/app/{appid}/?l=schinese"
+    url = f"https://store.steampowered.com/app/{appid}/?l=tchinese"
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
     }
