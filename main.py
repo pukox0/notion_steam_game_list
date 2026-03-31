@@ -187,7 +187,7 @@ def query_item_from_notion_database(game):
     }
 
     logger.info(f"querying {game['name']} from database")
-    data = {"filter": {"property": "name", "rich_text": {"equals": f"{game['name']}"}}}
+    data = {"filter": {"property": "Name", "rich_text": {"equals": f"{game['name']}"}}}
 
     try:
         response = send_request_with_retry(
