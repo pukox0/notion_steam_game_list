@@ -16,7 +16,7 @@ NOTION_API_KEY = os.environ.get("NOTION_API_KEY")
 NOTION_DATABASE_ID = os.environ.get("NOTION_DATABASE_ID")
 # https://developers.notion.com/reference/retrieve-a-database
 # OPTIONAL
-include_played_free_games = os.environ.get("include_played_free_games") or 'true'
+include_played_free_games = include_played_free_games = 'true'
 #set to 'true' by default
 enable_item_update = os.environ.get("enable_item_update") or 'true'
 #set to 'true' by default
