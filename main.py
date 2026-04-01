@@ -162,6 +162,15 @@ def add_item_to_notion_database(game, achievements_info, review_text, steam_stor
             "Tags": {
                 "type": "multi_select",
                 "multi_select": steam_store_data['tag']
+            },
+            "Release Date": {
+                "type": "rich_text",
+                "rich_text": [
+                    {
+                        "type": "text",
+                        "text": {"content": steam_store_data["released_date"]},
+                    }
+                ],
             }
         },
         "cover": {"type": "external", "external": {"url": f"{cover_url}"}},
@@ -267,6 +276,15 @@ def update_item_to_notion_database(page_id, game, achievements_info, review_text
             "Tags": {
                 "type": "multi_select",
                 "multi_select": steam_store_data['tag']
+            },
+            "Release Date": {
+                "type": "rich_text",
+                "rich_text": [
+                    {
+                        "type": "text",
+                        "text": {"content": steam_store_data["released_date"]},
+                    }
+                ],
             }
         },
         "cover": {"type": "external", "external": {"url": f"{cover_url}"}},
