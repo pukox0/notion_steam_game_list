@@ -69,9 +69,9 @@ def get_steam_store_info(appid):
     # released_date
     released_text = ''
     try:
-        released_date_elements =  soup.find_all('div', {'class': 'release_date'})
+        released_date_elements =  soup.find_all('div', {'class': 'date'})
         if released_date_elements:
-            released_text = info_elements[3].get_text(strip=True)
+            released_text = info_elements[0].get_text(strip=True)
     except Exception as e:
         print(f"简介提取失败: AppID {appid}, 错误: {e}")
         return metainfo
