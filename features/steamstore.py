@@ -26,9 +26,11 @@ def get_steam_store_info(appid):
     # 创建请求
     req = request.Request(url, headers=headers)
 
+    # 測試
     metainfo = {
         'info': '',
-        'tag': []
+        'tag': [],
+        'released_date': ''
     }
 
     try:
@@ -64,9 +66,20 @@ def get_steam_store_info(appid):
 
     options = constract_notion_multi_select_property(tags)
 
+    # released_date
+    released_text = ''
+    try:
+        released_date_elements =  soup.find_all('div', {'class': 'release_date'})
+        if released_date_elements:
+            released_text = info_elements[0].get_text(strip=True)
+    except Exception as e:
+        print(f"简介提取失败: AppID {appid}, 错误: {e}")
+        return metainfo
+    
     metainfo = {
         'info': info_text,
-        'tag': options
+        'tag': options,
+        'released_date': released_text
     }
 
     return metainfo
