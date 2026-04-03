@@ -239,7 +239,7 @@ def update_item_to_notion_database(page_id, game, achievements_info, review_text
 
     logger.info(f"updating {game['name']} to notion...")
 
-    if completion = -1 or completion = 100:
+    if completion == -1 or completion == 100:
         data = {
             "properties": {
                 "Name": {
