@@ -232,7 +232,7 @@ def update_item_to_notion_database(page_id, game, achievements_info, review_text
         completion = round(
             float(achieved_achievements) / float(total_achievements) * 100, 1
         )
-    elif total_achievements = 0:
+    elif total_achievements == 0:
         completion = 0
     else:
         completion = -1
