@@ -300,6 +300,60 @@ def update_item_to_notion_database(page_id, game, achievements_info, review_text
     except Exception as e:
         logger.error(f"Failed to send request: {e} .Error: {response.text}")
 
+# Only Update Time 
+def update_timeandach_to_notion_database(page_id, game, achievements_info):
+    url = f"https://api.notion.com/v1/pages/{page_id}"
+    headers = {
+        "Authorization": f"Bearer {NOTION_API_KEY}",
+        "Content-Type": "application/json",
+        "Notion-Version": "2022-06-28",
+    }
+
+    playtime = round(float(game["playtime_forever"]) / 60, 1)
+    last_played_time = time.strftime(
+        "%Y-%m-%d", time.localtime(game["rtime_last_played"])
+    )
+    store_url = f"https://store.steampowered.com/app/{game['appid']}"
+    total_achievements = achievements_info["total"]
+    achieved_achievements = achievements_info["achieved"]
+
+    if total_achievements > 0:
+        completion = round(
+            float(achieved_achievements) / float(total_achievements) * 100, 1
+        )
+    else:
+        completion = -1
+
+    logger.info(f"updating {game['name']} to notion...")
+
+    data = {
+        "properties": {
+            "Name": {
+                "type": "title",
+                "title": [{"type": "text", "text": {"content": f"{game['name']}"}}],
+            },
+            "Playtime": {"type": "number", "number": playtime},
+            "Last Play": {"type": "date", "date": {"start": last_played_time}},
+            "Completion": {"type": "number", "number": completion},
+            "Total Achievements": {"type": "number", "number": total_achievements},
+            "Achieved Achievements": {
+                "type": "number",
+                "number": achieved_achievements,
+            }
+        }
+    }
+
+    try:
+        response = send_request_with_retry(
+            url, headers=headers, json_data=data, method="patch"
+        )
+        logger.info(f"{game['name']} updated!")
+        return response.json()
+    except Exception as e:
+        logger.error(f"Failed to send request: {e} .Error: {response.text}")
+
+
+
 
 def database_create(page_id):
     url = "https://api.notion.com/v1/databases/"
@@ -431,8 +485,10 @@ if __name__ == "__main__":
         if queryed_item["results"] != []:
             if enable_item_update == "true":
                 logger.info(f"{game['name']} already exists! updating!")
-                update_item_to_notion_database(
-                    queryed_item["results"][0]["id"], game, achievements_info, review_text, steam_store_data
+                #update_item_to_notion_database(
+                #    queryed_item["results"][0]["id"], game, achievements_info, review_text, steam_store_data
+                update_timeandach_to_notion_database(
+                    queryed_item["results"][0]["id"], game, achievements_info
                 )
             else:
                 logger.info(f"{game['name']} already exists! skipping!")
