@@ -281,60 +281,104 @@ def update_item_to_notion_database(page_id, game, achievements_info, review_text
         #    "icon": {"type": "external", "external": {"url": f"{icon_url}"}},
         }
     else:
-        data = {
-            "properties": {
-                "Name": {
-                    "type": "title",
-                    "title": [{"type": "text", "text": {"content": f"{game['name']}"}}],
-                },
-                "Playtime": {"type": "number", "number": playtime},
-                "Last Play": {"type": "date", "date": {"start": last_played_time}},
-                "Store URL": {
-                    "type": "url",
-                    "url": store_url,
-                },
-                "Completion": {"type": "number", "number": completion},
-                "Total Achievements": {"type": "number", "number": total_achievements},
-                "Achieved Achievements": {
-                    "type": "number",
-                    "number": achieved_achievements,
-                },
-                "Review": {
-                    "type": "rich_text",
-                    "rich_text": [
-                        {
-                            "type": "text",
-                            "text": {"content": review_text},
-                        }
-                    ],
-                },
-                "Info": {
-                    "type": "rich_text",
-                    "rich_text": [
-                        {
-                            "type": "text",
-                            "text": {"content": steam_store_data["info"]},
-                        }
-                    ],
-                },
-                "Tags": {
-                    "type": "multi_select",
-                    "multi_select": steam_store_data['tag']
-                },
-                "Release Date": {
-                    "type": "rich_text",
-                    "rich_text": [
-                        {
-                            "type": "text",
-                            "text": {"content": steam_store_data["released_date"]},
-                        }
-                    ],
-                }
-             }   
-        #    },
-        #    "cover": {"type": "external", "external": {"url": f"{cover_url}"}},
-        #    "icon": {"type": "external", "external": {"url": f"{icon_url}"}},
-        }
+        if review_text is None:
+            data = {
+                "properties": {
+                    "Name": {
+                        "type": "title",
+                        "title": [{"type": "text", "text": {"content": f"{game['name']}"}}],
+                    },
+                    "Playtime": {"type": "number", "number": playtime},
+                    "Last Play": {"type": "date", "date": {"start": last_played_time}},
+                    "Store URL": {
+                        "type": "url",
+                        "url": store_url,
+                    },
+                    "Completion": {"type": "number", "number": completion},
+                    "Total Achievements": {"type": "number", "number": total_achievements},
+                    "Achieved Achievements": {
+                        "type": "number",
+                        "number": achieved_achievements,
+                    },
+                    "Info": {
+                        "type": "rich_text",
+                        "rich_text": [
+                            {
+                                "type": "text",
+                                "text": {"content": steam_store_data["info"]},
+                            }
+                        ],
+                    },
+                    "Tags": {
+                        "type": "multi_select",
+                        "multi_select": steam_store_data['tag']
+                    },
+                    "Release Date": {
+                        "type": "rich_text",
+                        "rich_text": [
+                            {
+                                "type": "text",
+                                "text": {"content": steam_store_data["released_date"]},
+                            }
+                        ],
+                    }
+                 }   
+            }
+        else:
+            data = {
+                "properties": {
+                    "Name": {
+                        "type": "title",
+                        "title": [{"type": "text", "text": {"content": f"{game['name']}"}}],
+                    },
+                    "Playtime": {"type": "number", "number": playtime},
+                    "Last Play": {"type": "date", "date": {"start": last_played_time}},
+                    "Store URL": {
+                        "type": "url",
+                        "url": store_url,
+                    },
+                    "Completion": {"type": "number", "number": completion},
+                    "Total Achievements": {"type": "number", "number": total_achievements},
+                    "Achieved Achievements": {
+                        "type": "number",
+                        "number": achieved_achievements,
+                    },
+                    "Review": {
+                        "type": "rich_text",
+                        "rich_text": [
+                            {
+                                "type": "text",
+                                "text": {"content": review_text},
+                            }
+                        ],
+                    },
+                    "Info": {
+                        "type": "rich_text",
+                        "rich_text": [
+                            {
+                                "type": "text",
+                                "text": {"content": steam_store_data["info"]},
+                            }
+                        ],
+                    },
+                    "Tags": {
+                        "type": "multi_select",
+                        "multi_select": steam_store_data['tag']
+                    },
+                    "Release Date": {
+                        "type": "rich_text",
+                        "rich_text": [
+                            {
+                                "type": "text",
+                                "text": {"content": steam_store_data["released_date"]},
+                            }
+                        ],
+                    }
+                 }   
+            #    },
+            #    "cover": {"type": "external", "external": {"url": f"{cover_url}"}},
+            #    "icon": {"type": "external", "external": {"url": f"{icon_url}"}},
+            }
 
     try:
         response = send_request_with_retry(
