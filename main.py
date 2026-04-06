@@ -281,7 +281,8 @@ def update_item_to_notion_database(page_id, game, achievements_info, review_text
         #    "icon": {"type": "external", "external": {"url": f"{icon_url}"}},
         }
     else:
-        if review_text is None:
+      #  if review_text is None:
+        if not review_text:
             data = {
                 "properties": {
                     "Name": {
